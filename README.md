@@ -17,25 +17,21 @@ devtools::install_github("mbaaske/unfolding")
 
 # Spheres as particles
 ## beta distributed radii
-lam <-3000
-theta <- list("shape1"=2,"shape2"=4)
-S <- simSphereSystem(theta,lam, rdist="rbeta", box=list(c(0,5)),pl=101)
-
-sp <- planarSection(S,d=2.5)
-ret <- unfold(sp,nclass=20)
+lam <-3000 <br />
+theta <- list("shape1"=2,"shape2"=4) <br />
+S <- simSphereSystem(theta,lam, rdist="rbeta", box=list(c(0,5)),pl=101) <br />
+ 
+sp <- planarSection(S,d=2.5) <br />
+ret <- unfold(sp,nclass=20) <br />
  
 ## Point process intensity
-cat("Intensities: ", sum(ret$N_V)/25, "vs.",lam,"\n")
+cat("Intensities: ", sum(ret$N_V)/25, "vs.",lam,"\n") <br />
  
 ## original diameters
-r3d <- unlist(lapply(S,function(x) 2.0*x$r))
-rest3d <- unlist(lapply(2:(length(ret$breaks)),
-            function(i) rep(ret$breaks[i],sum(ret$N_V[i-1]))))
+r3d <- unlist(lapply(S,function(x) 2.0*x$r))<br />
+rest3d <- unlist(lapply(2:(length(ret$breaks)),function(i) rep(ret$breaks[i],sum(ret$N_V[i-1]))))<br />
  
-op <- par(mfrow = c(1, 2))
-hist(r3d[r3d<=max(ret$breaks)], breaks=ret$breaks, main="Radius 3d",
-     freq=FALSE, col="gray",xlab="r")
-     
-hist(rest3d, breaks=ret$breaks,main="Radius estimated",
-     freq=FALSE, col="gray", xlab="r")
+op <- par(mfrow = c(1, 2))<br />
+hist(r3d[r3d<=max(ret$breaks)], breaks=ret$breaks, main="Radius 3d",freq=FALSE, col="gray",xlab="r")<br />     
+hist(rest3d, breaks=ret$breaks,main="Radius estimated", freq=FALSE, col="gray", xlab="r")<br />
 par(op)
