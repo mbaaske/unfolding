@@ -15,7 +15,7 @@ is implemented.
 # Installation: 
 devtools::install_github("mbaaske/unfolding")
 
-# Sphere
+# Spheres as particles
 ## beta distributed radii
 lam <-3000
 theta <- list("shape1"=2,"shape2"=4)
@@ -35,6 +35,7 @@ rest3d <- unlist(lapply(2:(length(ret$breaks)),
 op <- par(mfrow = c(1, 2))
 hist(r3d[r3d<=max(ret$breaks)], breaks=ret$breaks, main="Radius 3d",
      freq=FALSE, col="gray",xlab="r")
+     
 hist(rest3d, breaks=ret$breaks,main="Radius estimated",
      freq=FALSE, col="gray", xlab="r")
 par(op)
