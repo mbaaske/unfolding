@@ -15,7 +15,7 @@ is implemented.
 # Installation: 
 devtools::install_github("mbaaske/unfolding")
 
-# Spheres as particles
+# Example: Spheres as particles
 ## beta distributed radii
 lam <-3000 <br />
 theta <- list("shape1"=2,"shape2"=4) <br />
@@ -24,10 +24,10 @@ S <- simSphereSystem(theta,lam, rdist="rbeta", box=list(c(0,5)),pl=101) <br />
 sp <- planarSection(S,d=2.5) <br />
 ret <- unfold(sp,nclass=20) <br />
  
-## Point process intensity
+## point process intensity
 cat("Intensities: ", sum(ret$N_V)/25, "vs.",lam,"\n") <br />
  
-## original diameters
+## visualize 
 r3d <- unlist(lapply(S,function(x) 2.0*x$r))<br />
 rest3d <- unlist(lapply(2:(length(ret$breaks)),function(i) rep(ret$breaks[i],sum(ret$N_V[i-1]))))<br />
  
